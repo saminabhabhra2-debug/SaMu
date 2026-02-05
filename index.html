@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Valentine’s Day ❤️</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    /* =====================
+       GLOBAL RESET & BASE
+    ===================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffe4ec, #fff0f5);
+      overflow: hidden;
+      color: #5a1a2e;
+    }
+
+    /* =====================
+       INTRO SCREEN
+    ===================== */
+    .intro {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      animation: glow 3s infinite alternate;
+    }
+
+    .intro button {
+      background: #ffffff;
+      border: none;
+      padding: 18px 38px;
+      border-radius: 50px;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+      transition: transform 0.3s ease;
+    }
+
+    .intro button:hover {
+      transform: scale(1.05);
+    }
+
+    /* =====================
+       MAIN CARD
+    ===================== */
+    .card {
+      display: none;
+      height: 100%;
+      padding: 45px 25px;
+      text-align: center;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      color: #b30059;
+      margin-bottom: 15px;
+    }
+
+    .teddy {
+      width: 180px;
+      margin: 10px auto 25px;
+      display: block;
+      animation: floatUpDown 3s ease-in-out infinite;
+    }
+
+    .message {
+      font-size: 16px;
+      line-height: 1.9;
+      animation: fadeUp 2s ease;
+    }
+
+    .signature {
+      margin-top: 32px;
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: #800040;
+    }
+
+    /* =====================
+       MUSIC BUTTON
+    ===================== */
+    .music-btn {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background: #ffffff;
+      border: none;
+      border-radius: 50%;
+      padding: 12px;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+      z-index: 5;
+    }
+
+    /* =====================
+       FLOATING HEARTS
+    ===================== */
+    .heart {
+      position: absolute;
+      font-size: 18px;
+      animation: floatUp 4s linear forwards;
+      pointer-events: none;
+    }
+
+    /* =====================
+       POPUP MESSAGE
+    ===================== */
+    .popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 20;
+    }
+
+    .popup-content {
+      background: #ffffff;
+      padding: 26px 30px;
+      border-radius: 26px;
+      text-align: center;
+      animation: fadeIn 1s ease;
+    }
+
+    .popup-content p {
+      font-size: 18px;
+      color: #b30059;
+    }
+
+    .popup-content button {
+      margin-top: 15px;
+      padding: 10px 26px;
+      border: none;
+      background: #ff4d6d;
+      color: #ffffff;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+
+    /* =====================
+       ANIMATIONS
+    ===================== */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatUp {
+      from { opacity: 1; transform: translateY(0); }
+      to { opacity: 0; transform: translateY(-120px); }
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 0 20px rgba(255,255,255,0.3); }
+      to { box-shadow: 0 0 50px rgba(255,255,255,0.6); }
+    }
+
+    @keyframes floatUpDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- INTRO SCREEN -->
+  <div class="intro" id="intro">
+    <button onclick="openCard()">Tap to Open 💌</button>
+  </div>
+
+  <!-- MUSIC TOGGLE -->
+  <button class="music-btn" onclick="toggleMusic()">🎵</button>
+  <audio id="music" preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/10/30/audio_90c7c1d5b5.mp3?filename=romantic-piano-ambient-112191.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- MAIN CARD -->
+  <div class="card" id="card">
+    <h1>Will you be my Valentine?❤️</h1>
+
+    <!-- TEDDY IMAGE -->
+    <img src="teddy.png" alt="Cute Teddy Bear" class="teddy">
+
+    <div class="message">
+      You are in my forever —  
+      in every quiet prayer, every hopeful dream, and every heartbeat in between.  
+      With you, love feels gentle, safe, and endlessly beautiful.  
+      No matter where life takes us, my soul will always find its way back to you.
+    </div>
+
+    <div class="signature">
+      Forever Yours,<br>
+      <strong>Samina♥️</strong>
+    </div>
+  </div>
+
+  <!-- SURPRISE POPUP -->
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <p>I love you more every day ❤️</p>
+      <button onclick="closePopup()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    /* OPEN THE CARD */
+    function openCard() {
+      document.getElementById('intro').style.display = 'none';
+      document.getElementById('card').style.display = 'block';
+
+      // Surprise popup after 5 seconds
+      setTimeout(() => {
+        document.getElementById('popup').style.display = 'flex';
+      }, 5000);
+    }
+
+    /* MUSIC TOGGLE */
+    let isPlaying = false;
+    function toggleMusic() {
+      const music = document.getElementById('music');
+      if (isPlaying) {
+        music.pause();
+      } else {
+        music.currentTime = 0;
+        music.play().catch(() => {});
+      }
+      isPlaying = !isPlaying;
+    }
+
+    /* CLOSE POPUP */
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+
+    /* FLOATING HEARTS ON CLICK / TOUCH */
+    document.addEventListener('click', (e) => {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = '❤️';
+      heart.style.left = e.clientX + 'px';
+      heart.style.top = e.clientY + 'px';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 4000);
+    });
+  </script>
+
+</body>
+</html>
